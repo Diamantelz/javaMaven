@@ -3,13 +3,13 @@ package lesson18;
 import java.util.Random;
 
 public class Game  {
-    public static <T extends Employee> void printWinner(T e1, T e2) {
+    public static<T> void printWinner(Team<T> t1, Team<T> t2) {
         Random random = new Random();
         int i = random.nextInt(2);
         if (i == 1) {
-            System.out.println(e1.getName());
+            System.out.println(t1.getTitle());
         } else {
-            System.out.println(e2.getName());
+            System.out.println(t2.getTitle());
         }
     }
 }
