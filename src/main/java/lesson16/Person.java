@@ -11,7 +11,6 @@ public class Person {
     private String state;
     private String country;
     private LocalDateTime date;
-    private int age;
     private String email;
     private String username;
     private String password;
@@ -20,7 +19,7 @@ public class Person {
     }
 
     public Person(String gender, String name, String lastName, String city, String state, String country,
-                  LocalDateTime date, int age, String email, String username, String password) {
+                  LocalDateTime date, String email, String username, String password) {
         this.gender = gender;
         this.name = name;
         this.lastName = lastName;
@@ -28,7 +27,6 @@ public class Person {
         this.state = state;
         this.country = country;
         this.date = date;
-        this.age = age;
         this.email = email;
         this.username = username;
         this.password = password;
@@ -90,14 +88,6 @@ public class Person {
         this.date = date;
     }
 
-    public int getAge() {
-        return age;
-    }
-
-    public void setAge(int age) {
-        this.age = age;
-    }
-
     public String getEmail() {
         return email;
     }
@@ -129,7 +119,6 @@ public class Person {
 
         Person person = (Person) o;
 
-        if (age != person.age) return false;
         if (!Objects.equals(gender, person.gender)) return false;
         if (!Objects.equals(name, person.name)) return false;
         if (!Objects.equals(lastName, person.lastName)) return false;
@@ -151,7 +140,6 @@ public class Person {
         result = 31 * result + (state != null ? state.hashCode() : 0);
         result = 31 * result + (country != null ? country.hashCode() : 0);
         result = 31 * result + (date != null ? date.hashCode() : 0);
-        result = 31 * result + age;
         result = 31 * result + (email != null ? email.hashCode() : 0);
         result = 31 * result + (username != null ? username.hashCode() : 0);
         result = 31 * result + (password != null ? password.hashCode() : 0);
@@ -168,10 +156,13 @@ public class Person {
                 ", state='" + state + '\'' +
                 ", country='" + country + '\'' +
                 ", date=" + date +
-                ", age=" + age +
                 ", email='" + email + '\'' +
                 ", username='" + username + '\'' +
                 ", password='" + password + '\'' +
                 '}';
+    }
+
+    public int getAge() {
+        return LocalDateTime.now().getYear() - this.getDate().getYear();
     }
 }

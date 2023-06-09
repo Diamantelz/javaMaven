@@ -89,8 +89,6 @@ public class PersonAPI {
         person.setState(object.getJSONObject("location").getString("state"));
         person.setCountry(object.getJSONObject("location").getString("country"));
         person.setDate(toLocalDateTimeFromString(object.getJSONObject("dob").getString("date")));
-        person.setAge(Period.between(toLocalDateTimeFromString(object.getJSONObject("dob").getString("date"))
-                .toLocalDate(), LocalDateTime.now().toLocalDate()).getYears());
         person.setEmail(object.getString("email"));
         person.setUsername(object.getJSONObject("login").getString("username"));
         person.setPassword(object.getJSONObject("login").getString("password"));
