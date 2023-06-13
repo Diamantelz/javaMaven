@@ -3,9 +3,7 @@ package lesson21;
 import lesson16.Person;
 import lesson16.PersonAPI;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class Homework {
@@ -36,10 +34,18 @@ public class Homework {
                 .max()
                 .ifPresent(System.out::println);
 
+        female.stream()
+                .max((o1, o2) -> o1.getAge() - o2.getAge())
+                .ifPresent(System.out::println);
+
         System.out.print("min female age: ");
         female.stream()
                 .mapToInt(Person::getAge)
                 .min()
+                .ifPresent(System.out::println);
+
+        female.stream()
+                .min((o1, o2) -> o1.getAge() - o2.getAge())
                 .ifPresent(System.out::println);
 
         System.out.print("max male age: ");
@@ -48,10 +54,18 @@ public class Homework {
                 .max()
                 .ifPresent(System.out::println);
 
+        male.stream()
+                .max((o1, o2) -> o1.getAge() - o2.getAge())
+                .ifPresent(System.out::println);
+
         System.out.print("min male age: ");
         male.stream()
                 .mapToInt(Person::getAge)
                 .min()
+                .ifPresent(System.out::println);
+
+        male.stream()
+                .min((o1, o2) -> o1.getAge() - o2.getAge())
                 .ifPresent(System.out::println);
         System.out.println("--------------");
 
